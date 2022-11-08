@@ -16,32 +16,34 @@ val df = spark.sql("select * from default.people10m")
 
 // COMMAND ----------
 
-val columns = df.columns
+display(df)
+
+// COMMAND ----------
+
+df.show
+
+// COMMAND ----------
+
+df.printSchema#
 
 // COMMAND ----------
 
 import org.apache.spark.sql.types.StructType
 
-// COMMAND ----------
-
 val schema: StructType = df.schema
 
 // COMMAND ----------
 
+val columns = df.columns
+
+// COMMAND ----------
+
+val dataTypes = df.dtypes
+
+// COMMAND ----------
+
+val dTypesMap = df.dtypes.toMap
+
+// COMMAND ----------
+
 df.printSchema
-
-// COMMAND ----------
-
-df.columns
-
-// COMMAND ----------
-
-df.dtypes
-
-// COMMAND ----------
-
-df.dtypes.toMap
-
-// COMMAND ----------
-
-display(df)
