@@ -50,9 +50,9 @@ val jsonSchema: StructType = spark.read.json(dfWithJsonString.select("value").as
 // COMMAND ----------
 
 val parsedJsonDF = dfWithJsonString
- .withColumn("value", from_json(col("value"), jsonSchema))
- .select("*", "value.*")
- .drop("value")
+ .withColumn("value", from_json(col("value"), jsonSchema)) // Use from_json to turn string value to StructType with a schema.
+ .select("*", "value.*") // Select all existing columns with * and then bring all fields in value StructType to top-level columns.
+ .drop("value") // Drop the value column as we no longer need it.
 
 // COMMAND ----------
 
