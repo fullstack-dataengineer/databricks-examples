@@ -41,6 +41,14 @@ df1.union(df2)
 
 // COMMAND ----------
 
+val unionDF = df1.union(df2.drop("d"))
+
+// COMMAND ----------
+
+display(unionDF)
+
+// COMMAND ----------
+
 val unionedByName = df1.unionByName(df2, allowMissingColumns=true)
 
 // COMMAND ----------
